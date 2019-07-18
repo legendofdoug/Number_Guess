@@ -2,9 +2,16 @@ import random
 
 mysterio = random.randint(1,10000)
 print("A number has been generated from 1 to 10,000.")
-guess = 0
+guess = 0.0
 while guess != mysterio:
-    guess = int(input("Please place your guess: "))
+    guess = 0.0
+    while type(guess) != int:
+        try:
+            guess = input("Please place your guess: ")
+            guess = int(guess.replace(',', ''))
+        except ValueError:
+            print ("That is not an integer.")
+
     if guess <= 0:
         print ("That shit is 0 or a negative number man. Guess from 1 to 10,000")
     elif guess > 10000:
